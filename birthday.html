@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Countdown 🎂</title>
+<style>
+    body {
+        text-align: center;
+        font-family: 'Comic Sans MS', cursive;
+        background: #ffe6f2;
+        padding-top: 50px;
+    }
+    #countdown {
+        font-size: 30px;
+        color: #ff3399;
+        margin-top: 20px;
+    }
+    #message {
+        display: none;
+        font-size: 32px;
+        color: #e60073;
+        margin-top: 30px;
+    }
+    .teddy {
+        width: 150px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎉 Birthday Countdown 🎉</h1>
+<div id="countdown"></div>
+
+<div id="message">
+    <p>💖 Happy Birthday 💖</p>
+    <p>Tumhari zindagi hamesha khushiyon se bhari rahe 🥰</p>
+    <img src="https://i.imgur.com/6XKQJ9F.png" class="teddy">
+    <img src="https://i.imgur.com/6XKQJ9F.png" class="teddy">
+</div>
+
+<script>
+    const birthday = new Date("Feb 12, 2026 00:00:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = birthday - now;
+
+        if (distance <= 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").style.display = "none";
+            document.getElementById("message").style.display = "block";
+        } else {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
